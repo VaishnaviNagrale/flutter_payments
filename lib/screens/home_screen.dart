@@ -10,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNoController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -39,18 +40,18 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       _razorpay.open(options);
     } catch (error) {
-      print('Error: $error');
+        //print('Error: $error');
     }
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    print('Payment Successful');
+    //print('Payment Successful');
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           'Payment Successful \n${response.orderId}\n${response.paymentId}\n${response.signature}',
-          style: TextStyle(color: Colors.white),
+          style:const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.green,
       ),
@@ -59,12 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
-    print('Payment Failed');
+    //print('Payment Failed');
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           'Payment Failed\n${response.code}\n${response.message}',
-          style: TextStyle(color: Colors.white),
+          style:const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.red,
       ),
@@ -73,9 +74,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _handleExternalWallet(ExternalWalletResponse response) {
     // Do something when an external wallet was selected
-    print('Payment Failed');
+    //print('Payment Failed');
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+     const SnackBar(
         content: Text(
           'Payment Failed',
           style: TextStyle(color: Colors.white),
@@ -103,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: Text(
+        title:const Text(
           'Razorpay Payments',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
@@ -122,8 +123,8 @@ class _HomeScreenState extends State<HomeScreen> {
               textField(size, "Amount", true, amountController),
               ElevatedButton(
                 onPressed: lunchRazorpay,
-                child: Text('Pay Now'),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                child:const Text('Pay Now'),
               ),
             ],
           ),

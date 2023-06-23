@@ -12,7 +12,7 @@ Widget textField(Size size, String text, bool isNumerical,
         keyboardType: isNumerical ? TextInputType.number : null,
         decoration: InputDecoration(
           hintText: text,
-          border: OutlineInputBorder(),
+          border:const OutlineInputBorder(),
         ),
       ),
     ),
